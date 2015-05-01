@@ -28,6 +28,4 @@ coverage
 .DS_Store
 .idea
 .secret
-
-#Ignore secrets
 config/secrets.yml
