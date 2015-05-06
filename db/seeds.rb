@@ -7,15 +7,15 @@ require 'faker'
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 5.times do
-	User.create(name: Faker::Name.name, email: Faker::Internet.email, password: "password")
+  User.create(name: Faker::Name.name, email: Faker::Internet.email, password: "password")
 end
 
 User.all.each do |user|
-	2.times do
-		group = user.created_groups.create(name: Faker::Company.name)
-		group.members << user
-		group.save
-		2.times { group.members.create(name: Faker::Name.name, email: Faker::Internet.email, password: "password") }
-	end
+  2.times do
+    group = user.owned_groups.create(name: Faker::Company.name)
+    group.members << user
+    group.save
+    2.times { group.members.create(name: Faker::Name.name, email: Faker::Internet.email, password: "password") }
+  end
 end
 
